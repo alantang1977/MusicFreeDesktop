@@ -4,14 +4,14 @@ import MultiRadioGroupSettingItem from "../../components/MultiRadioGroupSettingI
 import ListBoxSettingItem from "../../components/ListBoxSettingItem";
 
 import "./index.scss";
-import {changeLang, getLangList} from "@/shared/i18n/renderer";
-import {toast} from "react-toastify";
-import {useTranslation} from "react-i18next";
-import {getGlobalContext} from "@/shared/global-context/renderer";
+import { changeLang, getLangList } from "@/shared/i18n/renderer";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+import { getGlobalContext } from "@/shared/global-context/renderer";
 
 
 export default function Normal() {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     const allLangs = getLangList();
 
@@ -21,12 +21,16 @@ export default function Normal() {
                 label={t("settings.normal.check_update")}
                 keyPath="normal.checkUpdate"
             ></CheckBoxSettingItem>
+            <CheckBoxSettingItem
+                label={t("settings.normal.auto_load_more")}
+                keyPath="normal.autoLoadMore"
+            ></CheckBoxSettingItem>
             <RadioGroupSettingItem
                 label={t("settings.normal.close_behavior")}
                 keyPath="normal.closeBehavior"
                 options={[
                     "exit_app",
-                    "minimize"
+                    "minimize",
                 ]}
                 renderItem={(item) => t("settings.normal." + item)}
             ></RadioGroupSettingItem>
@@ -36,13 +40,13 @@ export default function Normal() {
                     keyPath="normal.taskbarThumb"
                     options={[
                         "artwork",
-                        "window"
+                        "window",
                     ]}
                     renderItem={item => {
                         if (item === "artwork") {
                             return t("settings.normal.current_artwork");
                         } else {
-                            return t("settings.normal.main_window")
+                            return t("settings.normal.main_window");
                         }
                     }}
 
@@ -58,7 +62,7 @@ export default function Normal() {
                 keyPath="normal.musicListColumnsShown"
                 options={[
                     "duration",
-                    "platform"
+                    "platform",
                 ]}
                 renderItem={(item) => {
                     return t("media.media_" + item);
